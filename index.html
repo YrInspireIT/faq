@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Under Maintenance</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #3498db, #2980b9);
+      color: #fff;
+      text-align: center;
+    }
+
+    .maintenance-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .loader {
+      border: 8px solid rgba(255, 255, 255, 0.3);
+      border-top: 8px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1.5s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      animation: twinkle 2s linear infinite;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.6; transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const numStars = 100;
+      const body = document.body;
+
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.left = `${Math.random() * 100}vw`;
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        body.appendChild(star);
+      }
+    });
+
+    let dots = 0;
+    function updateTitle() {
+      dots = (dots + 1) % 4;
+      document.title = "Site Under Maintenance" + ".".repeat(dots);
+    }
+    setInterval(updateTitle, 500);
+  </script>
+</head>
+<body>
+  <div class="maintenance-container">
+    <h1>Site Under Maintenance</h1>
+    <p>We're currently working on improving the site and will be back shortly.  Thank you for your patience.</p>
+    <div class="loader"></div>
+  </div>
+</body>
+</html>
