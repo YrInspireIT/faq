@@ -1,112 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Under Maintenance</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #3498db, #2980b9);
-      color: #fff;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center & Resources - Your Inspire IT</title>
+    <!-- Link to Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    .maintenance-container {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      width: 80%;
-      max-width: 600px;
-    }
+    <style>
+        /* --- Global Styles & Variables (Theme Consistency) --- */
+        :root {
+            --primary-bg: #eff3ff;
+            --secondary-bg: #ffffff;
+            --tertiary-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #475569;
+            --text-lighter: #64748b;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.7; /* Base line height */
+            font-size: 16px;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main { flex: 1; }
 
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.8em; }
+        h1 { font-size: 2.8rem; line-height: 1.2; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.4rem; }
+        h4 { font-size: 1.15rem; font-weight: 500; color: var(--text-light); } /* For FAQ categories */
+        p { margin-bottom: 1em; color: var(--text-light); }
+        a { text-decoration: none; color: var(--accent-color); transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); }
+        img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { margin-bottom: 10px; }
+        .section-title p { max-width: 650px; margin: 0 auto; color: var(--text-lighter); }
 
-    .loader {
-      border: 8px solid rgba(255, 255, 255, 0.3);
-      border-top: 8px solid #fff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1.5s linear infinite;
-      margin: 20px auto;
-    }
+        .btn { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
+        .btn-outline { background: none; border: 1px solid var(--accent-color); color: var(--accent-color); }
+        .btn-outline:hover { background: var(--primary-bg); color: var(--accent-hover); border-color: var(--accent-hover); }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+        /* --- Header/Navigation --- */
+        .main-header { background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 2px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); }
+        .main-nav { display: flex; } /* Default for desktop */
+        .main-nav a { margin-left: 25px; font-weight: 500; color: var(--text-dark); position: relative; padding-bottom: 5px; }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+        .main-nav a:hover::after, .main-nav a.active-nav::after { width: 100%; }
+        .main-nav a:hover, .main-nav a.active-nav { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text-dark); } /* Hidden by default */
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 50%;
-      animation: twinkle 2s linear infinite;
-    }
+        /* --- Help Hero Section --- */
+        #help-hero {
+            background: linear-gradient(160deg, var(--primary-bg) 0%, var(--secondary-bg) 90%);
+            padding: 90px 0 110px 0;
+            text-align: center;
+        }
+        #help-hero h1 { animation: fadeInUp 0.5s ease-out backwards 0.1s; }
+        #help-hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 45px auto; color: var(--text-light); animation: fadeInUp 0.5s ease-out backwards 0.2s; }
+        .search-wrapper { max-width: 650px; margin: 0 auto; animation: fadeInUp 0.5s ease-out backwards 0.3s; }
+        .search-form { display: flex; box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15); border-radius: 50px; overflow: hidden; background-color: var(--secondary-bg); border: 1px solid var(--border-color); }
+        .search-input { flex-grow: 1; padding: 16px 30px; border: none; font-size: 1.05rem; color: var(--text-dark); background: none; }
+        .search-input:focus { outline: none; }
+        .search-button { background-color: var(--accent-color); color: #fff; border: none; padding: 0 35px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; display: inline-flex; align-items: center; }
+        .search-button:hover { background-color: var(--accent-hover); }
+        .search-button i { margin-right: 8px; font-size: 0.9em; }
+        .popular-searches { margin-top: 25px; text-align: center; }
+        .popular-searches span { font-size: 0.95rem; color: var(--text-lighter); margin-right: 10px; font-weight: 500; }
+        .popular-searches a { font-size: 0.95rem; color: var(--accent-color); margin: 0 8px; padding: 3px 0; border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+        .popular-searches a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
 
-    @keyframes twinkle {
-      0% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-      100% { opacity: 0.6; transform: scale(1); }
-    }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      p { font-size: 1em; }
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const numStars = 100;
-      const body = document.body;
+        /* --- Help Categories Section --- */
+        #help-categories { background-color: var(--secondary-bg); }
+        .help-categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .category-card { background-color: var(--tertiary-bg); padding: 35px; border-radius: 10px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; animation: fadeInUp 0.6s ease-out backwards; }
+        .category-card:nth-child(1) { animation-delay: 0.2s; }
+        .category-card:nth-child(2) { animation-delay: 0.3s; }
+        .category-card:nth-child(3) { animation-delay: 0.4s; }
+        .category-card:nth-child(4) { animation-delay: 0.5s; }
+        .category-card:nth-child(5) { animation-delay: 0.6s; }
+        .category-card:nth-child(6) { animation-delay: 0.7s; }
+        .category-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px var(--shadow-color); }
+        .category-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; }
+        .category-card h3 { margin-bottom: 15px; font-size: 1.2rem; }
+        .category-card p { margin-bottom: 25px; font-size: 0.95rem; }
+        .category-card a { font-weight: 500; }
 
-      for (let i = 0; i < numStars; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.left = `${Math.random() * 100}vw`;
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.animationDelay = `${Math.random() * 2}s`;
-        body.appendChild(star);
-      }
-    });
 
-    let dots = 0;
-    function updateTitle() {
-      dots = (dots + 1) % 4;
-      document.title = "Site Under Maintenance" + ".".repeat(dots);
-    }
-    setInterval(updateTitle, 500);
-  </script>
+        /* --- Featured Articles Section --- */
+        #featured-articles { background-color: var(--primary-bg); }
+        .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .article-card { background-color: var(--secondary-bg); border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden; transition: box-shadow 0.3s ease; animation: fadeInUp 0.6s ease-out backwards; }
+        .article-card:nth-child(1) { animation-delay: 0.2s; }
+        .article-card:nth-child(2) { animation-delay: 0.4s; }
+        .article-card:nth-child(3) { animation-delay: 0.6s; }
+        .article-card:hover { box-shadow: 0 10px 25px var(--shadow-color); }
+        .article-image { height: 200px; overflow: hidden; }
+        .article-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; border-radius: 0; }
+        .article-card:hover .article-image img { transform: scale(1.05); }
+        .article-content { padding: 25px; }
+        .article-content h3 { font-size: 1.15rem; margin-bottom: 10px; }
+        .article-content p { font-size: 0.95rem; margin-bottom: 20px; color: var(--text-lighter); }
+        .article-meta { font-size: 0.85rem; color: var(--text-lighter); margin-bottom: 15px; }
+        .article-meta i { margin-right: 5px; }
+        .article-content a { font-weight: 500; }
+
+
+        /* --- FAQ Section --- */
+        #faq { background-color: var(--secondary-bg); }
+        .faq-container { max-width: 850px; margin: 0 auto; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category h4 { margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); color: var(--accent-color); font-weight: 600; font-size: 1.25rem; }
+        .faq-item { background-color: var(--secondary-bg); margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; animation: fadeInUp 0.5s ease-out backwards; transition: box-shadow 0.3s ease, display 0s; /* Added display transition for search */ }
+        .faq-item.hidden-by-search { display: none !important; /* Force hide for search */ }
+        .faq-item:hover { box-shadow: 0 4px 15px var(--shadow-color); }
+
+        .faq-question { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 18px 25px; background: none; border: none; text-align: left; font-family: inherit; font-size: 1.05rem; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: background-color 0.2s ease; }
+        .faq-question.active { background-color: #f5f3ff; color: var(--accent-color); }
+        .faq-question span { flex-grow: 1; margin-right: 10px; /* Ensure space for icon */}
+        .faq-question i { font-size: 1rem; transition: transform 0.3s ease; color: var(--accent-color); flex-shrink: 0; margin-left: 15px; }
+        .faq-question.active i { transform: rotate(180deg); }
+        .faq-answer { padding: 0 25px 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; border-top: 1px solid transparent; }
+        .faq-answer.active { max-height: 400px; padding-top: 20px; padding-bottom: 25px; border-top-color: var(--border-color); }
+        .faq-answer p { color: var(--text-light); line-height: 1.8; margin-bottom: 0.8em; }
+        .faq-answer ul { margin-left: 20px; margin-top: 10px; margin-bottom: 10px; color: var(--text-light); line-height: 1.8; }
+        .faq-answer li { margin-bottom: 8px; }
+
+
+        /* --- Contact Support Section --- */
+        #contact-support { background-color: var(--primary-bg); text-align: center; padding: 60px 0; }
+        #contact-support h2 { margin-bottom: 15px; }
+        #contact-support p { max-width: 550px; margin: 0 auto 30px auto; }
+
+
+        /* --- Footer --- */
+        .main-footer { background-color: #1e293b; color: #cbd5e1; padding: 50px 0 20px 0; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
+        .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; position: relative; padding-bottom: 10px; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--accent-color); }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #cbd5e1; transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .footer-socials a { display: inline-block; color: #fff; background-color: rgba(255, 255, 255, 0.15); width: 40px; height: 40px; line-height: 40px; border-radius: 50%; text-align: center; margin-right: 10px; font-size: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .footer-socials a:hover { background-color: var(--accent-color); transform: scale(1.1); }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 25px; text-align: center; font-size: 0.9rem; color: #94a3b8; }
+        .footer-transparency-note { font-size: 0.85rem; margin-top: 10px; opacity: 0.8; }
+
+
+        /* --- Animations --- */
+        @keyframes fadeInScaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; } h2 { font-size: 1.8rem; } section { padding: 60px 0; }
+            #help-hero { padding: 70px 0 90px 0; }
+             /* Responsive Nav */
+            .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+            .main-nav { display: none; /* Hide by default */ flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 4px 10px var(--shadow-color); text-align: center; }
+            .main-nav.active { display: flex; /* Show when active */ }
+            .main-nav a { margin: 10px 20px; padding: 8px 0; width: auto; }
+            .main-nav a::after { display: none; }
+            .main-nav a:hover { background-color: var(--primary-bg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .footer-content { text-align: center; }
+            .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .footer-col ul li a:hover { padding-left: 0; }
+            .faq-question { padding: 15px 20px; font-size: 1rem;}
+            .faq-answer { padding: 0 20px 0 20px; }
+            .faq-answer.active { padding-top: 15px; padding-bottom: 20px;}
+            .articles-grid { grid-template-columns: 1fr; }
+             .popular-searches span { display: block; margin-bottom: 10px; }
+             .popular-searches a { margin: 0 5px 8px 5px; display: inline-block; }
+        }
+
+        @media (max-width: 576px) {
+            body { font-size: 15px; }
+            h1 { font-size: 1.8rem; } h2 { font-size: 1.6rem; } h3 { font-size: 1.2rem; } h4 { font-size: 1.1rem; }
+            .logo { font-size: 1.3rem; }
+            .container { padding: 0 15px; }
+            #help-hero { padding: 50px 0 70px 0; }
+            #help-hero p { font-size: 1rem; }
+            .search-wrapper { max-width: 100%; }
+            .search-form { flex-direction: column; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+            .search-input { padding: 14px 20px; border-bottom: 1px solid var(--border-color); border-radius: 8px 8px 0 0; font-size: 1rem; }
+            .search-button { padding: 14px 20px; border-radius: 0 0 8px 8px; justify-content: center;}
+             .popular-searches a { font-size: 0.9rem; }
+            .help-categories-grid { grid-template-columns: 1fr; }
+            .category-card { padding: 30px 25px; }
+            .article-content { padding: 20px; }
+            .faq-question { padding: 14px 15px; font-size: 0.95rem;}
+            .faq-answer { padding: 0 15px 0 15px; }
+            .faq-answer.active { padding-top: 15px; padding-bottom: 15px;}
+            #faq .faq-category h4 { font-size: 1.15rem; }
+        }
+
+    </style>
 </head>
 <body>
-  <div class="maintenance-container">
-    <h1>Site Under Maintenance</h1>
-    <p>We're currently working on improving the site and will be back shortly.  Thank you for your patience.</p>
-    <div class="loader"></div>
-  </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Your Inspire IT</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+             <nav class="main-nav" id="main-nav">
+                <a href="index.html">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Report</a>
+               
+                <a href="help.html" class="active-nav">FAQ</a>
+               
+                <a href="auth.html">Login/Sign Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Help Hero Section -->
+        <section id="help-hero">
+            <div class="container">
+                <h1>Your Inspire IT Help & Support Center</h1>
+                <p>Your comprehensive guide to navigating Your Inspire IT, understanding tasks, and managing your earnings effectively.</p>
+                 <div class="search-wrapper">
+                     <form class="search-form" action="#" method="get" id="help-search-form"> <!-- Added ID to form -->
+                         <input type="search" class="search-input" id="search-input" placeholder="e.g., How to withdraw funds?" name="query" aria-label="Search Help Center"> <!-- Added ID to input -->
+                         <button type="submit" class="search-button"><i class="fas fa-search"></i> Search</button>
+                     </form>
+                     <div class="popular-searches">
+                         <span>Popular:</span>
+                         <a href="#">Payments</a>
+                         <a href="#">Task Quality</a>
+                         <a href="#">Verification</a>
+                         <a href="#">Profile Settings</a>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Help Categories Section -->
+        <section id="help-categories">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Browse Help Topics</h2>
+                    <p>Explore resources organized by common areas to quickly find what you need.</p>
+                </div>
+                <div class="help-categories-grid">
+                    <!-- Categories remain structurally same -->
+                    <div class="category-card"> <i class="fas fa-user-plus category-icon"></i> <h3>Getting Started</h3> <p>Sign up, account verification, dashboard overview, first steps.</p> <a href="#">Explore Guides <i class="fas fa-arrow-right"></i></a> </div>
+                    <div class="category-card"> <i class="fas fa-tasks category-icon"></i> <h3>Working on Tasks</h3> <p>Task types, instructions, quality guidelines, submission process.</p> <a href="#">View Task Info <i class="fas fa-arrow-right"></i></a> </div>
+                    <div class="category-card"> <i class="fas fa-wallet category-icon"></i> <h3>Payments & Withdrawals</h3> <p>Methods, minimums, processing times, transaction history.</p> <a href="#">Payment Details <i class="fas fa-arrow-right"></i></a> </div>
+                    <div class="category-card"> <i class="fas fa-user-cog category-icon"></i> <h3>Account Management</h3> <p>Profile updates, notification settings, password changes.</p> <a href="#">Manage Account <i class="fas fa-arrow-right"></i></a> </div>
+                    <div class="category-card"> <i class="fas fa-shield-alt category-icon"></i> <h3>Security & Privacy</h3> <p>Data protection, account security tips, reporting issues.</p> <a href="#">Security Center <i class="fas fa-arrow-right"></i></a> </div>
+                    <div class="category-card"> <i class="fas fa-bullhorn category-icon"></i> <h3>Platform Updates</h3> <p>Latest news, new features, policy changes, announcements.</p> <a href="#">Read Announcements <i class="fas fa-arrow-right"></i></a> </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Articles / Blog Posts Section -->
+         <section id="featured-articles">
+              <div class="container">
+                 <div class="section-title">
+                     <h2>Featured Guides & Insights</h2>
+                     <p>Check out our latest articles and tips designed to enhance your Your Inspire IT experience.</p>
+                 </div>
+                 <div class="articles-grid">
+                     <!-- Articles remain structurally same -->
+                     <div class="article-card">
+                          <div class="article-image"><img src="https://images.unsplash.com/photo-1554224155-1696413565d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=400" alt="Calculator and documents"></div>
+                         <div class="article-content"> <div class="article-meta"><i class="far fa-calendar-alt"></i> Oct 26, 2023   <i class="far fa-folder"></i> Tips & Tricks</div> <h3>Maximizing Your Earnings on Your Inspire IT</h3> <p>Discover effective strategies...</p> <a href="#">Read More <i class="fas fa-arrow-right"></i></a> </div>
+                     </div>
+                      <div class="article-card">
+                          <div class="article-image"><img src="https://images.unsplash.com/photo-1550565118-3a141b673e01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=400" alt="Laptop with security shield icon"></div>
+                         <div class="article-content"> <div class="article-meta"><i class="far fa-calendar-alt"></i> Oct 15, 2023   <i class="far fa-folder"></i> Security</div> <h3>Staying Safe: Recognizing Online Scams</h3> <p>Learn how to identify common online scams...</p> <a href="#">Read More <i class="fas fa-arrow-right"></i></a> </div>
+                     </div>
+                      <div class="article-card">
+                           <div class="article-image"><img src="https://images.unsplash.com/photo-1543286386-713dde5402cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=400" alt="Person analyzing charts on screen"></div>
+                         <div class="article-content"> <div class="article-meta"><i class="far fa-calendar-alt"></i> Sep 30, 2023   <i class="far fa-folder"></i> Case Study</div> <h3>Understanding Task Quality Requirements</h3> <p>A deep dive into why quality matters...</p> <a href="#">Read More <i class="fas fa-arrow-right"></i></a> </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+        <!-- FAQ Section (Categorized) -->
+        <section id="faq">
+            <div class="container">
+                 <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find quick answers to the most common questions about using Your Inspire IT.</p>
+                 </div>
+                <div class="faq-container">
+
+                    <!-- FAQ Category: General & Account -->
+                    <div class="faq-category" data-category="general"> <!-- Added data-category -->
+                         <h4><i class="fas fa-info-circle"></i> General & Account</h4>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1"> <span>Is Your Inspire IT free to join?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-1"> <p>Absolutely! Signing up and using Youe Inspire IT to find tasks is completely free. We don't charge any membership fees.</p> </div> </div>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2"> <span>Can I have multiple accounts?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-2"> <p>No, Your Inspire IT strictly prohibits users from creating or using multiple accounts. This policy helps ensure fair task distribution and prevents abuse of the platform. Violation of this rule may lead to account suspension.</p> </div> </div>
+                          <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3"> <span>How do I update my profile information?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-3"> <p>You can update your name, contact details, and other profile information in the 'Account Settings' or 'Profile' section after logging in.</p> </div> </div>
+                    </div>
+
+                     <!-- FAQ Category: Earnings & Payments -->
+                    <div class="faq-category" data-category="payments"> <!-- Added data-category -->
+                         <h4><i class="fas fa-dollar-sign"></i> Earnings & Payments</h4>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4"> <span>How much can I realistically earn?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-4"> <p>Earnings vary based on the types of tasks you complete, how many tasks are available, the time you dedicate, and your accuracy/quality. Some users earn supplementary income, while others earn more significantly. We emphasize transparency – the payout for each task is clearly stated beforehand.</p> </div> </div>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5"> <span>How and when do I get paid?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-5"> <p>Once you reach the minimum withdrawal threshold (clearly stated in your dashboard), you can request a payout via supported methods like PayPal or Bank Transfer. Processing times typically range from 3-7 business days, depending on the method selected.</p> </div> </div>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6"> <span>How do I update my payment information?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-6"> <p>You can update your payment details within your Account Settings or Profile section. Ensure your information is accurate to avoid payment delays. For security reasons, changing payment methods might require additional verification.</p> </div> </div>
+                          <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7"> <span>Are there any fees for withdrawals?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-7"> <p>Your Inspire IT aims to minimize fees, but some payment processors (like PayPal or banks for international transfers) may impose their own transaction fees. Any potential fees are usually outlined during the withdrawal process. Check the 'Payment Info' section for details specific to each method.</p> </div> </div>
+                    </div>
+
+                     <!-- FAQ Category: Tasks & Quality -->
+                     <div class="faq-category" data-category="tasks"> <!-- Added data-category -->
+                         <h4><i class="fas fa-check-circle"></i> Tasks & Quality</h4>
+                          <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8"> <span>What kind of tasks are available?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-8"> <p>We offer a variety of tasks including, but not limited to:</p> <ul><li>Online surveys</li><li>Data entry and verification</li><li>Image tagging and categorization</li><li>Content moderation</li><li>Basic transcription</li><li>Participating in research studies</li></ul> <p>Task availability depends on client needs and may vary.</p> </div> </div>
+                         <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-9"> <span>Why was my task rejected?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-9"> <p>Tasks may be rejected if they don't meet the quality standards outlined in the instructions, contain significant errors, or appear to be submitted hastily without proper effort. Please carefully review task guidelines before starting. You can usually find feedback on rejected tasks in your task history or dashboard.</p> </div> </div>
+                          <div class="faq-item"> <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-10"> <span>How can I improve my task quality?</span> <i class="fas fa-chevron-down"></i> </button> <div class="faq-answer" id="faq-answer-10"> <p>Always read the instructions carefully before starting a task. Pay attention to detail, double-check your work before submitting, and take your time. Avoid rushing. Consistently high-quality work may lead to access to more or better-paying tasks over time.</p> </div> </div>
+                     </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Support Section -->
+        <section id="contact-support">
+            <div class="container">
+                <h2>Didn't Find Your Answer?</h2>
+                <p>Our support team is ready to assist you. Please provide as much detail as possible so we can help you effectively.</p>
+                <a href="#" class="btn btn-outline"><i class="fas fa-headset"></i> Contact Support Team</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+     <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center / FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col" style="display: none;"><h4>Connect With Us</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+            </div>
+            <div class="footer-bottom">
+                 © 2022-2025 Your Inspire IT. All Rights Reserved. 
+            </div>
+        </div>
+     </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                // Ensure classes are correctly toggled
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Optional: Close menu when a link inside is clicked
+            mainNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                         mainNav.classList.remove('active');
+                         const icon = menuToggle.querySelector('i');
+                         icon.classList.remove('fa-times');
+                         icon.classList.add('fa-bars');
+                    }
+                });
+             });
+        }
+
+
+        // --- FAQ Accordion ---
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = document.getElementById(button.getAttribute('aria-controls'));
+                const isActive = button.getAttribute('aria-expanded') === 'true';
+
+                // Toggle ARIA attributes
+                button.setAttribute('aria-expanded', !isActive);
+                // Toggle visibility (use class instead of direct style for search compatibility)
+                // answer.hidden = isActive; // We control visibility via CSS now
+
+                // Toggle classes for styling & icon
+                button.classList.toggle('active');
+                answer.classList.toggle('active');
+                const icon = button.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+
+                // Adjust max-height for animation
+                 if (!isActive) {
+                     answer.style.maxHeight = answer.scrollHeight + 'px';
+                 } else {
+                     answer.style.maxHeight = '0';
+                 }
+            });
+
+            // Initialize state based on aria-expanded
+            const initialAnswer = document.getElementById(button.getAttribute('aria-controls'));
+            if (button.getAttribute('aria-expanded') === 'false') {
+                // initialAnswer.hidden = true; // Control via CSS
+                initialAnswer.style.maxHeight = '0';
+                button.querySelector('i').classList.add('fa-chevron-down');
+                button.querySelector('i').classList.remove('fa-chevron-up');
+            } else {
+                // initialAnswer.hidden = false; // Control via CSS
+                 initialAnswer.style.maxHeight = initialAnswer.scrollHeight + 'px';
+                 button.querySelector('i').classList.add('fa-chevron-up');
+                 button.querySelector('i').classList.remove('fa-chevron-down');
+            }
+        });
+
+
+        // --- FAQ Search Filter ---
+        const searchInput = document.getElementById('search-input');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const faqCategories = document.querySelectorAll('.faq-category'); // Select categories
+
+        if (searchInput && faqItems.length > 0 && faqCategories.length > 0) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                faqItems.forEach(item => {
+                    const questionElement = item.querySelector('.faq-question span');
+                    const answerElement = item.querySelector('.faq-answer'); // Get answer container
+
+                    // Ensure elements exist before accessing textContent
+                    const questionText = questionElement ? questionElement.textContent.toLowerCase() : '';
+                    const answerText = answerElement ? answerElement.textContent.toLowerCase() : ''; // Get all text in answer
+
+                    const isMatch = questionText.includes(searchTerm) || answerText.includes(searchTerm);
+
+                    // Use a class to hide/show instead of direct style for better management
+                    if (isMatch || searchTerm === '') {
+                         item.classList.remove('hidden-by-search'); // Show item
+                    } else {
+                        item.classList.add('hidden-by-search'); // Hide item
+                    }
+                });
+
+                // Check categories: Hide category if all its items are hidden
+                faqCategories.forEach(category => {
+                    const itemsInCategory = category.querySelectorAll('.faq-item');
+                    let allHidden = true;
+                    itemsInCategory.forEach(item => {
+                        if (!item.classList.contains('hidden-by-search')) {
+                            allHidden = false;
+                        }
+                    });
+
+                    const categoryHeading = category.querySelector('h4'); // Select the heading
+                    if (categoryHeading) {
+                        if (allHidden && searchTerm !== '') {
+                            categoryHeading.style.display = 'none'; // Hide heading
+                             category.style.marginBottom = '0'; // Collapse margin if hidden
+                        } else {
+                            categoryHeading.style.display = 'block'; // Show heading
+                            category.style.marginBottom = '40px'; // Restore margin
+                        }
+                    }
+                });
+            });
+        }
+
+        // Optional: Prevent form submission if using only client-side search
+        const searchForm = document.getElementById('help-search-form');
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Stop form from actually submitting
+                // You could add a "Search results below" message here if desired
+            });
+        }
+
+    </script>
+
 </body>
 </html>
