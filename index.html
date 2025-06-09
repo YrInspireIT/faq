@@ -247,7 +247,7 @@
                
                 <a href="https://yrinspireit.github.io/faq" class="active-nav">FAQ</a>
                
-                <a href="https://yrinspireit.github.io/login">Login/Sign Up</a>
+                <a href="#" style="color: #838f8f">Profile</a>
             </nav>
         </div>
     </header>
@@ -256,11 +256,11 @@
         <!-- Help Hero Section -->
         <section id="help-hero">
             <div class="container">
-                <h1>Your Inspire IT Help & Support Center</h1>
-                <p>Your comprehensive guide to navigating Your Inspire IT, understanding tasks, and managing your earnings effectively.</p>
+                <h1>Your Inspire IT Help & Resources Center</h1>
+                <p>Your Inspire IT তে কাজ করার জন্য একানে অনেকগুলো টিউটোরিয়াল, আর্টিকেল রয়েছে।  আপনার কোনটি লাগবে খুজে নিন!</p>
                  <div class="search-wrapper">
                      <form class="search-form" action="#" method="get" id="help-search-form"> <!-- Added ID to form -->
-                         <input type="search" class="search-input" id="search-input" placeholder="e.g., How to withdraw funds?" name="query" aria-label="Search Help Center"> <!-- Added ID to input -->
+                         <input type="search" class="search-input" id="search-input" placeholder="e.g., টাকা কীভাবে তুলবো?" name="query" aria-label="Search Help Center"> <!-- Added ID to input -->
                          <button type="submit" class="search-button"><i class="fas fa-search"></i> Search</button>
                      </form>
                      <div class="popular-searches">
@@ -276,7 +276,7 @@
 
         <!-- Help Categories Section -->
         <section id="help-categories">
-            <div class="container">
+            <div class="container" style="display: none;">
                 <div class="section-title">
                     <h2>Browse Help Topics</h2>
                     <p>Explore resources organized by common areas to quickly find what you need.</p>
@@ -298,13 +298,13 @@
               <div class="container">
                  <div class="section-title">
                      <h2>Featured Guides & Insights</h2>
-                     <p>Check out our latest articles and tips designed to enhance your Your Inspire IT experience.</p>
+                     <p>আপনার 'Your Inspire IT' আইটি অভিজ্ঞতা উন্নত করার জন্য ডিজাইন করা আমাদের আর্টিকেল এবং টিপসগুলি দেখুন।</p>
                  </div>
                  <div class="articles-grid">
                      <!-- Articles remain structurally same -->
                      <div class="article-card">
-                          <div class="article-image"><img src="https://images.unsplash.com/photo-1554224155-1696413565d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=400" alt="Calculator and documents"></div>
-                         <div class="article-content"> <div class="article-meta"><i class="far fa-calendar-alt"></i> Oct 26, 2023   <i class="far fa-folder"></i> Tips & Tricks</div> <h3>Maximizing Your Earnings on Your Inspire IT</h3> <p>Discover effective strategies...</p> <a href="https://yrinspireit.github.io/error">Read More <i class="fas fa-arrow-right"></i></a> </div>
+                          <div class="article-image"><img src="https://i.postimg.cc/pdTRpH26/Picsart-25-06-05-20-59-57-675.jpg" alt="Calculator and documents"></div>
+                         <div class="article-content"> <div class="article-meta"><i class="far fa-calendar-alt"></i> Oct 26, 2023   <i class="far fa-folder"></i> Tips & Tricks &nbsp; <i class="fa-solid fa-pen"></i> Adiba Jannat</div> <h3>Your Inspire IT তে জয়েন হবো কীভাবে?</h3> <p>সিম্পল সহজ কয়েকটি ধাপে দেখে নেওয়া যাক, কীভাবে জয়পন হতে হয় Your Inspire IT তে! </p> <a href="https://yrinspireit.github.io/error">Read More <i class="fas fa-arrow-right"></i></a> </div>
                      </div>
                       <div class="article-card">
                           <div class="article-image"><img src="https://images.unsplash.com/photo-1550565118-3a141b673e01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=400" alt="Laptop with security shield icon"></div>
@@ -521,45 +521,7 @@
 
 
 
-
-    // --- প্রয়োজনীয়: কুকি পড়ার ফাংশন ---
-    // এই ফাংশনটি অবশ্যই এই স্ক্রিপ্টের আগে লোড হতে হবে অথবা এর মধ্যেই থাকতে হবে।
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    // --- রিডাইরেকশন লজিক ---
-    (function() {
-        const loginCookieName = 'loggedInUser'; // লগইনের সময় যে নামে কুকি সেট করেছিলেন
-        const redirectTargetPage = 'https://YrInspireIT.github.io/sorry';   // লগইন করা থাকলে এই পেজে রিডাইরেক্ট হবে
-
-        const isLoggedIn = getCookie(loginCookieName);
-        const currentPage = window.location.pathname; // বর্তমান পেজের পাথ (e.g., /profile.html)
-
-        // চেক করুন: কুকি আছে কিনা এবং বর্তমান পেজটিই টার্গেট পেজ কিনা (অসীম রিডাইরেক্ট এড়াতে)
-        if (isLoggedIn && isLoggedIn !== '' && currentPage.indexOf(redirectTargetPage) === -1) {
-            console.log(`User '${isLoggedIn}' is logged in. Redirecting from ${currentPage} to ${redirectTargetPage}`);
-            window.location.href = redirectTargetPage;
-        } else {
-            // যদি লগইন করা না থাকে অথবা ইউজার আগে থেকেই sl.html পেজে থাকে, তাহলে কিছু করার দরকার নেই।
-            if (!isLoggedIn || isLoggedIn === '') {
-                 console.log(`User not logged in on ${currentPage}. No redirect.`);
-            } else {
-                 console.log(`User already on ${redirectTargetPage}. No redirect needed.`);
-            }
-        }
-    })(); // ফাংশনটি অবিলম্বে কল করা হচ্ছে (Immediately Invoked Function Expression - IIFE)
-
-
-
     </script>
 
 </body>
-    </html>
+</html>
