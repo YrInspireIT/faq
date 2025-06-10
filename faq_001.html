@@ -1,453 +1,397 @@
 <!DOCTYPE html>
-<html lang="bn"> <!-- Changed language to Bengali -->
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ফর্ম পূরণের নির্দেশিকা - Your Inspire IT</title> <!-- Changed Title -->
-    <!-- Link to Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Link to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <title>সিম্পল সহজ কয়েকটি ধাপে দেখে নেওয়া যাক, কীভাবে জয়পন হতে হয় Your Inspire IT তে!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- Global Styles & Variables (Theme Consistency) --- */
         :root {
-            --primary-bg: #eff3ff;
+            --primary-bg: #f4f7fe; /* Slightly lighter primary bg for a softer feel */
             --secondary-bg: #ffffff;
-            --tertiary-bg: #f8fafc; /* Used for CTA cards */
-            --text-dark: #1e293b;
-            --text-light: #475569;
-            --text-lighter: #64748b;
+            --tertiary-bg: #f8fafc;
+            --text-dark: #1a202c;  /* Darker text for better contrast */
+            --text-medium: #4a5568; /* Medium text */
+            --text-light: #718096;  /* Lighter text */
             --accent-color: #4f46e5;
             --accent-hover: #4338ca;
+            --accent-light: #e0e7ff; /* Lighter accent for backgrounds/borders */
             --border-color: #e2e8f0;
-            --shadow-color: rgba(0, 0, 0, 0.08);
+            --shadow-color: rgba(79, 70, 229, 0.06); /* Softer shadow linked to accent */
+            --shadow-strong-color: rgba(79, 70, 229, 0.1);
             --success-color: #10b981;
             --warning-color: #f59e0b;
-            --font-primary: 'Poppins', sans-serif;
-            --font-bengali: 'Noto Sans Bengali', sans-serif;
+            --step-line-color: var(--accent-light);
+            --step-icon-active-bg: var(--accent-color);
+            --step-icon-inactive-bg: var(--accent-light);
+            --step-icon-active-text: var(--secondary-bg);
+            --step-icon-inactive-text: var(--accent-color);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: var(--font-bengali), var(--font-primary); /* Prioritize Bengali font */
+            font-family: 'Poppins', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.65; /* Adjusted line height for readability */
             font-size: 16px;
             overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        main { flex: 1; padding: 60px 0; }
-
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        h1, h2, h3, h4 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.8em; font-family: var(--font-bengali), var(--font-primary); }
-        h1 { font-size: 2.8rem; line-height: 1.2; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.15rem; }
-        p { margin-bottom: 1em; color: var(--text-light); }
-        a { text-decoration: none; color: var(--accent-color); transition: color 0.3s ease; }
-        a:hover { color: var(--accent-hover); }
         
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { margin-bottom: 10px; }
-        .section-title p { max-width: 700px; margin: 0 auto; color: var(--text-lighter); }
+        .jsp-container { /* Joining Steps Pro Container */
+            max-width: 960px;
+            margin: 50px auto 80px; /* More vertical space */
+            padding: 0 25px;
+        }
 
-        .btn { display: inline-block; background-color: var(--accent-color); color: #fff !important; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; }
-        .btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); color: #fff !important; }
-
-        .btn-outline { /* New button style for CTAs */
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-color) !important;
-            border: 2px solid var(--accent-color);
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        .jsp-header {
             text-align: center;
+            margin-bottom: 70px;
         }
-        .btn-outline:hover {
-            background-color: var(--accent-color);
-            color: #fff !important;
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
+        .jsp-header h1 {
+            font-size: 2.6rem; /* Slightly reduced for modern feel */
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
-        .btn-outline i { margin-left: 5px; transition: transform 0.3s ease; }
-        .btn-outline:hover i { transform: translateX(3px); }
+        .jsp-header .jsp-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .jsp-header .jsp-highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .jsp-timeline {
+            position: relative;
+            padding-left: 60px; /* Space for icons and line */
+        }
+
+        .jsp-timeline::before { /* Vertical connector line */
+            content: '';
+            position: absolute;
+            left: 22px; /* Centered with the icon */
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background-color: var(--step-line-color);
+            border-radius: 3px;
+            z-index: 0;
+        }
+        
+        .jsp-step {
+            position: relative;
+            margin-bottom: 45px; /* Increased spacing */
+            opacity: 0; /* For animation */
+            transform: translateY(20px); /* For animation */
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        /* Staggered animation for steps */
+        .jsp-step:nth-child(1) { animation-delay: 0.1s; }
+        .jsp-step:nth-child(2) { animation-delay: 0.2s; }
+        .jsp-step:nth-child(3) { animation-delay: 0.3s; }
+        .jsp-step:nth-child(4) { animation-delay: 0.4s; }
+        .jsp-step:nth-child(5) { animation-delay: 0.5s; }
+        .jsp-step:nth-child(6) { animation-delay: 0.6s; }
+        .jsp-step:nth-child(7) { animation-delay: 0.7s; }
+        .jsp-step:nth-child(8) { animation-delay: 0.8s; }
+        .jsp-step:nth-child(9) { animation-delay: 0.9s; }
+        .jsp-step:nth-child(10) { animation-delay: 1.0s; }
 
 
-        /* --- Header/Navigation --- */
-        .main-header { background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 2px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-        .main-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); font-family: var(--font-primary); }
-        .main-nav { display: flex; }
-        .main-nav a { margin-left: 25px; font-weight: 500; color: var(--text-dark); position: relative; padding-bottom: 5px; font-family: var(--font-primary); }
-        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-        .main-nav a:hover::after, .main-nav a.active-nav::after { width: 100%; }
-        .main-nav a:hover, .main-nav a.active-nav { color: var(--accent-color); }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text-dark); }
+        .jsp-step:last-child { margin-bottom: 0; }
 
-        /* --- Footer --- */
-        .main-footer { background-color: #1e293b; color: #cbd5e1; padding: 50px 0 20px 0; margin-top: auto; }
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
-        .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
-        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; position: relative; padding-bottom: 10px; font-family: var(--font-bengali), var(--font-primary); }
-        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--accent-color); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: #cbd5e1; transition: color 0.3s ease, padding-left 0.3s ease; font-family: var(--font-bengali), var(--font-primary); }
-        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .footer-socials a { display: inline-block; color: #fff; background-color: rgba(255, 255, 255, 0.15); width: 40px; height: 40px; line-height: 40px; border-radius: 50%; text-align: center; margin-right: 10px; font-size: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
-        .footer-socials a:hover { background-color: var(--accent-color); transform: scale(1.1); }
-        .footer-bottom { border-top: 1px solid #334155; padding-top: 25px; text-align: center; font-size: 0.9rem; color: #94a3b8; font-family: var(--font-primary); }
+        .jsp-step-icon-container {
+            position: absolute;
+            left: -38px; /* Pull icon to align with timeline line */
+            top: -2px; /* Fine-tune vertical alignment */
+            width: 46px; /* Icon width */
+            height: 46px; /* Icon height */
+            background-color: var(--step-icon-inactive-bg);
+            color: var(--step-icon-inactive-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem; /* Icon size */
+            font-weight: 700; /* Number boldness */
+            border: 3px solid var(--secondary-bg); /* Creates separation from line */
+            box-shadow: 0 0 0 3px var(--step-icon-inactive-bg); /* Outer ring */
+            z-index: 1;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-        /* --- Article/Guide Page Specific Styles --- */
-        .form-guide-content {
+        .jsp-step-content-wrapper {
             background-color: var(--secondary-bg);
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            margin-top: 10px;
-            animation: fadeInScaleUp 0.8s ease-out forwards;
+            padding: 25px 30px; /* More padding */
+            border-radius: 10px; /* Modern rounded corners */
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .jsp-step:hover .jsp-step-content-wrapper {
+            box-shadow: 0 7px 25px var(--shadow-strong-color);
+            transform: translateY(-3px);
+        }
+        .jsp-step:hover .jsp-step-icon-container {
+            background-color: var(--step-icon-active-bg);
+            color: var(--step-icon-active-text);
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px var(--step-icon-active-bg);
         }
 
-        .guide-section {
-            margin-bottom: 35px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
+
+        .jsp-step-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 8px;
         }
-        .guide-section:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .jsp-step-description {
+            font-size: 0.95rem;
+            color: var(--text-medium);
             margin-bottom: 0;
         }
-
-        .guide-section > h3 {
-            font-size: 1.6rem;
+        .jsp-step-description strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .jsp-step-description a {
             color: var(--accent-color);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-hover);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .jsp-step-description a:hover {
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Special styling for the final step */
+        .jsp-step.jsp-final-step .jsp-step-content-wrapper {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .jsp-step.jsp-final-step .jsp-step-title,
+        .jsp-step.jsp-final-step .jsp-step-description,
+        .jsp-step.jsp-final-step .jsp-step-description strong {
+            color: var(--secondary-bg);
+        }
+        .jsp-step.jsp-final-step .jsp-step-icon-container {
+            background-color: var(--success-color); /* Make final icon stand out */
+            color: var(--secondary-bg);
+            box-shadow: 0 0 0 3px var(--success-color);
+        }
+         .jsp-step.jsp-final-step:hover .jsp-step-icon-container {
+            background-color: var(--warning-color);
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .jsp-cta-section {
+            text-align: center;
+            margin-top: 70px;
+        }
+        .jsp-cta-button {
             display: inline-block;
-        }
-
-        .form-field-explanation { margin-bottom: 25px; }
-        .form-field-explanation h4 { font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
-        .form-field-explanation p { color: var(--text-light); font-size: 1rem; line-height: 1.8; }
-        .form-field-explanation p small { display: block; margin-top: 8px; font-style: italic; color: var(--text-lighter); font-size: 0.9rem; }
-        .form-field-explanation ul { list-style-position: inside; padding-left: 5px; margin-top: 10px; }
-        .form-field-explanation li { margin-bottom: 5px; color: var(--text-light); }
-
-        .mandatory { color: #ef4444; font-weight: bold; margin-left: 4px; }
-
-        .important-note { background-color: #fffbeb; border-left: 4px solid var(--warning-color); padding: 15px 20px; margin: 25px 0; border-radius: 6px; }
-        .important-note p { margin-bottom: 0; color: #78350f;}
-        .important-note p strong { color: #b45309; font-weight: 600; }
-
-        .verification-info { margin: 25px 0; text-align: center;  }
-        .btn-warning { display: inline-block; background-color: var(--warning-color); color: #fff !important; padding: 12px 25px; border-radius: 8px; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; }
-        .btn-warning:hover { background-color: #d97706; transform: translateY(-2px); color: #fff !important; }
-        .btn-warning i { margin-right: 8px; }
-
-        .privacy-assurance { background-color: #f0fdf4; border-left: 4px solid var(--success-color); padding: 15px 20px; margin-top: 20px; border-radius: 6px; display: flex; align-items: center; }
-        .privacy-assurance i { color: var(--success-color); font-size: 1.5rem; margin-right: 15px; }
-        .privacy-assurance p { margin-bottom: 0; color: #047857; }
-
-        .final-message { text-align: center; margin-top: 40px; padding: 25px; background-color: var(--tertiary-bg); border-radius: 8px; }
-        .final-message p { font-size: 1.1rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0; }
-        
-        .article-image { /* Style for the added image */
-            width: 100%;
-           
-            margin: 25px auto; /* Centered with top/bottom margin */
-            display: block;
-            border: 1px solid var(--border-color);
+            background-color: var(--accent-color);
+            color: var(--secondary-bg);
+            padding: 15px 40px;
             border-radius: 8px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        }
+        .jsp-cta-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 7px 20px rgba(79, 70, 229, 0.3);
+        }
+        .jsp-cta-button i {
+            margin-right: 10px;
         }
 
-        /* --- Related Articles CTA Styles --- */
-        .related-articles-section {
-            /* Styles for the section if needed */
-        }
-        .related-articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for better responsiveness */
-            gap: 25px;
-            margin-top: 20px;
-        }
-        .article-cta-card {
-            background-color: var(--secondary-bg); /* Changed to secondary for contrast with main guide area */
-            padding: 25px;
-            border-radius: 10px; /* Slightly more rounded */
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-color);
-        }
-        .article-cta-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15); /* Accent shadow on hover */
-        }
-        .article-cta-card h4 {
-            font-size: 1.2rem; /* Adjusted size */
-            color: var(--accent-color);
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .article-cta-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            flex-grow: 1; 
-            margin-bottom: 20px;
-        }
-        .article-cta-card .btn-outline {
-            margin-top: auto; 
-            width: fit-content; 
-            padding: 10px 20px;
+        /* Fade-in Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInScaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        
-        /* --- Responsive Design --- */
-        @media (max-width: 992px) {
-            .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
-            .main-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 4px 10px var(--shadow-color); text-align: center; }
-            .main-nav.active { display: flex; }
-            .main-nav a { margin: 10px 20px; padding: 8px 0; width: auto; }
-            .main-nav a::after { display: none; }
-            .main-nav a:hover { background-color: var(--primary-bg); }
-        }
 
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            main { padding: 40px 0; }
-            h2 { font-size: 1.7rem; }
-            .form-guide-content { padding: 25px 20px; }
-            .guide-section > h3 { font-size: 1.4rem; }
-            .form-field-explanation h4 { font-size: 1.1rem; }
-            .footer-content { text-align: center; }
-            .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
-            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
-            .footer-col ul li a:hover { padding-left: 0; }
-            .article-image { max-width: 320px; }
+            .jsp-header h1 { font-size: 2.1rem; }
+            .jsp-header .jsp-subtitle { font-size: 1.05rem; }
+            .jsp-timeline { padding-left: 45px; } /* Adjust space for icons */
+            .jsp-step-icon-container {
+                left: -33px; /* Adjust icon position */
+                width: 40px; height: 40px; font-size: 1rem;
+            }
+            .jsp-step-title { font-size: 1.15rem; }
+            .jsp-step-description { font-size: 0.9rem; }
+            .jsp-step-content-wrapper { padding: 20px 25px; }
         }
 
-        @media (max-width: 576px) {
-             body { font-size: 15px; }
-             h2 { font-size: 1.6rem; }
-             .logo { font-size: 1.3rem; }
-             .container { padding: 0 15px; }
-             .form-guide-content { padding: 20px 15px; }
-             .guide-section > h3 { font-size: 1.3rem; }
-             .form-field-explanation h4 { font-size: 1.05rem; }
-             .form-field-explanation p { font-size: 0.95rem; }
-             .btn-warning { padding: 10px 20px; font-size: 0.95rem; }
-             .article-cta-card h4 { font-size: 1.1rem; }
-             .article-image { max-width: 100%; } /* Full width on very small screens */
+        @media (max-width: 480px) {
+            .jsp-header h1 { font-size: 1.8rem; }
+            .jsp-header .jsp-subtitle { font-size: 0.95rem; }
+            .jsp-timeline { padding-left: 35px; }
+            .jsp-timeline::before { left: 16px; }
+            .jsp-step-icon-container {
+                left: -27px;
+                width: 34px; height: 34px; font-size: 0.9rem;
+            }
+            .jsp-step-title { font-size: 1.05rem; }
+            .jsp-step-description { font-size: 0.85rem; }
+             .jsp-step-content-wrapper { padding: 15px 20px; }
+             .jsp-cta-button { padding: 12px 30px; font-size: 1rem; }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <a href="https://yrinspireit.github.io/" class="logo">Your Inspire IT</a>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-             <nav class="main-nav" id="main-nav">
-                <a href="https://yrinspireit.github.io/">Home</a>
-                <a href="https://yrinspireit.github.io/about">About Us</a>
-                <a href="https://yrinspireit.github.io/contact">Contact Us</a>
-                <a href="https://yrinspireit.github.io/report">Report</a>
-                <a href="https://yrinspireit.github.io/faq">FAQ</a>
-                <a href="https://yrinspireit.github.io/login">Login/Sign Up</a>
-            </nav>
-        </div>
-    </header>
+    <div class="jsp-container">
+        <header class="jsp-header">
+            <h1>আপনার <span class="jsp-highlight">সাফল্যের পথচলা</span> শুরু করুন</h1>
+            <p class="jsp-subtitle">আমাদের সাথে যুক্ত হয়ে আপনার ক্যারিয়ারকে নতুন উচ্চতায় নিয়ে যাওয়ার জন্য এই সহজ ধাপগুলো অনুসরণ করুন। প্রতিটি পদক্ষেপে আমরা আছি আপনার পাশে।</p>
+        </header>
 
-    <main>
-        <div class="container">
-            <div class="section-title" style="margin-bottom: 30px;">
-                <h2>আমাদের এক্সক্লুসিভ কমিউনিটিতে যোগদানের নির্দেশিকা</h2>
-                <p>আমাদের এই প্ল্যাটফর্মে আপনাকে স্বাগতম! রেজিস্ট্রেশন ফর্মটি সঠিকভাবে পূরণ করে আমাদের এক্সক্লুসিভ কমিউনিটির একজন সদস্য হয়ে যান। নিচের ধাপগুলো অনুসরণ করুন।</p>
-            </div>
-
-            <article class="form-guide-content">
-                <section class="guide-section">
-                    <h3>ভূমিকা ও গুরুত্বপূর্ণ তথ্য</h3>
-                    <p>আমাদের সাথে আপনার পথচলা শুরু করতে নিচের ফর্মটি সতর্কতার সাথে পূরণ করুন। আপনার প্রতিটি তথ্য আমাদের কাছে অত্যন্ত মূল্যবান এবং <strong style="color: var(--accent-color);">সর্বোচ্চ নিরাপত্তায় সুরক্ষিত</strong> থাকবে। আমরা কথা দিচ্ছি, আপনার ব্যক্তিগত তথ্য কোনোভাবেই অপব্যবহার করা হবে না।</p>
-                    
-                    <!-- Added Image (Screenshot of the form) -->
-                    <img src="https://i.postimg.cc/tRM4CnXS/Picsart-25-06-09-15-17-20-353.jpg" alt="রেজিস্ট্রেশন ফর্মের নমুনা" class="article-image" style="width: 100%;">
-                    <!-- Image source: Using the first screenshot you provided, hosted on ibb.co for example. Replace with your actual image path. -->
-
-
-                    <div class="verification-info">
-                         <a href="#" class="btn-warning"><i class="fas fa-question-circle"></i> কীভাবে একাউন্ট খুলবেন তা জানতে এখানে ক্লিক করুন!</a>
-                    </div>
-
-                    <div class="important-note">
-                        <p><strong>বিশেষ দ্রষ্টব্য:</strong> যে ফিল্ডগুলোতে লাল তারকা (<span class="mandatory">*</span>) চিহ্ন দেওয়া আছে, সেগুলো অবশ্যই পূরণ করতে হবে। আপনার সঠিক রেফারেল আইডি ব্যবহার করুন (যদি থাকে)।</p>
-                    </div>
-                </section>
-
-                <section class="guide-section">
-                    <h3>ফর্ম পূরণের বিস্তারিত ধাপসমূহ</h3>
-                    
-                    <div class="form-field-explanation">
-                        <h4>১. আপনার পুরো নাম (Full Name) <span class="mandatory">*</span></h4>
-                        <p>এই অংশে আপনার সম্পূর্ণ নামটি লিখুন। উদাহরণস্বরূপ, ফর্মে যেভাবে "মোহাম্মদ আব্দুল্লাহ" দেওয়া আছে, সেভাবে আপনার নামটি লিখুন।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>২. আপনার ইমেইল (Email Address) (ঐচ্ছিক)</h4>
-                        <p>আপনার একটি সচল ইমেইল ঠিকানা এখানে প্রদান করুন। যেমন: <code>example@email.com</code>।</p>
-                        <p><small>ইমেইল দিলে আপনার একাউন্ট সুরক্ষিত থাকে এবং আমাদের জন্য আপনার সাথে যোগাযোগ ও বিভিন্ন তথ্য আদান-প্রদান করা সহজ হয়। ফর্মে এই ফিল্ডটিকে ঐচ্ছিক হিসেবে দেখানো হয়েছে (পাশে "(ঐচ্ছিক)" লেখা এবং কোনো লাল তারকা চিহ্ন নেই)।</small></p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৩. সচল মোবাইল নম্বর (Active Mobile Number) <span class="mandatory">*</span></h4>
-                        <p>আপনার একটি সচল এবং ব্যক্তিগত মোবাইল নম্বর দিন। এই নম্বরে আপনার সাথে যোগাযোগ করা হতে পারে। নম্বরটি ১১ সংখ্যার হতে হবে। যেমন: <code>01XXXXXXXXX</code>।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৪. বর্তমান ঠিকানা (Current Address) <span class="mandatory">*</span></h4>
-                        <p>আপনি বর্তমানে যেখানে বসবাস করছেন, সেই ঠিকানাটি বিস্তারিতভাবে লিখুন। সম্পূর্ণ ও সঠিক ঠিকানা দিলে ভালো হয়।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৫. আপনার বয়স (Age in years) <span class="mandatory">*</span></h4>
-                        <p>আপনার বর্তমান বয়স বছরে উল্লেখ করুন। ফর্মে উল্লিখিত নির্দেশ অনুযায়ী, আপনার বয়স <strong style="color: var(--text-dark);">কমপক্ষে ১২ বছর</strong> হতে হবে।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৬. সর্বশেষ শিক্ষাগত যোগ্যতা (Latest Educational Qualification) <span class="mandatory">*</span></h4>
-                        <p>আপনার সর্বশেষ অর্জিত শিক্ষাগত যোগ্যতার বিবরণ দিন। যেমন: এস.এস.সি, এইচ.এস.সি, স্নাতক (বিষয়) ইত্যাদি।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৭. পেমেন্ট গ্রহণের মাধ্যম (Preferred Payment Method) <span class="mandatory">*</span></h4>
-                        <p>আপনি কোন মাধ্যমে আপনার উপার্জিত অর্থ গ্রহণ করতে চান, সেটি এখান থেকে নির্বাচন করুন।</p>
-                        <ul>
-                            <li>ড্রপডাউন মেনু থেকে আপনার পছন্দের মাধ্যম (যেমন: বিকাশ, নগদ, রকেট ইত্যাদি) বেছে নিন।</li>
-                            <li>এই মাধ্যমটি পরবর্তী সময়ে পরিবর্তন করার সুযোগ থাকবে।</li>
-                        </ul>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৮. পেমেন্ট নম্বর / একাউন্ট (Payment Number / Account) <span class="mandatory">*</span></h4>
-                        <p>আপনি ৭ নং ধাপে যে পেমেন্ট মাধ্যম নির্বাচন করেছেন, সেই মাধ্যমের সঠিক একাউন্ট নম্বরটি এখানে সতর্কতার সাথে লিখুন। এই নম্বরেই আপনাকে টাকা পাঠানো হবে, তাই নম্বরটি নির্ভুল হওয়া জরুরি।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>৯. ফেসবুক প্রোফাইল লিঙ্ক (Facebook Profile Link) <span class="mandatory">*</span></h4>
-                        <p>আপনার ফেসবুক প্রোফাইলের সম্পূর্ণ লিঙ্কটি এখানে প্রদান করুন। যেমন: <code>https://facebook.com/yourprofileid</code>। লিঙ্কটি অবশ্যই সচল এবং আপনার নিজের হতে হবে।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>১০. রেফারেল আইডি (Your Referral ID)</h4>
-                        <p>যদি আমাদের কোনো সদস্যের মাধ্যমে আপনি এই প্ল্যাটফর্মে এসে থাকেন এবং তার রেফারেল আইডি আপনার কাছে থাকে, তবে সেটি এখানে ব্যবহার করুন। এটি সাধারণত ঐচ্ছিক, তবে ফর্মে "আপনার সঠিক রেফারেল আইডি ব্যবহার করুন" উল্লেখ থাকায়, যদি থাকে তবে অবশ্যই দিন।</p>
-                    </div>
-                </section>
-
-                <section class="guide-section">
-                    <h3>ফর্ম জমা দেওয়া এবং গোপনীয়তা</h3>
-                    <div class="form-field-explanation">
-                        <h4>আবেদন জমা দিন</h4>
-                        <p>উপরের সকল তথ্য সঠিকভাবে পূরণ করার পর, ফর্মের নিচে থাকা "<strong style="color: var(--accent-color);">আবেদন জমা দিন</strong>" বাটনে ক্লিক করুন।</p>
-                    </div>
-                    <div class="privacy-assurance">
-                        <i class="fas fa-shield-alt"></i>
-                        <p>আপনার দেওয়া সকল তথ্য এন্ড-টু-এন্ড এনক্রিপশনের মাধ্যমে সুরক্ষিত। আমরা আপনার তথ্যের গোপনীয়তা রক্ষায় প্রতিশ্রুতিবদ্ধ। আপনার তথ্যের কোনো অপব্যবহার করা হবে না।</p>
-                    </div>
-                </section>
-
-                <section class="guide-section">
-                    <h3>আবেদন সফলভাবে গৃহীত হলে</h3>
-                    <p>সঠিকভাবে ফর্ম জমা দেওয়ার পর, আপনি স্ক্রিনে একটি নিশ্চিতকরণ বার্তা দেখতে পাবেন। বার্তাটি হবে: "<strong style="color: var(--success-color);">আবেদন সফলভাবে গৃহীত হয়েছে!</strong>"</p>
-                    
-                    <div style="text-align:center; margin: 20px 0; padding: 20px; background-color: #f9f9f9; border: 1px solid #eee; border-radius: 8px;">
-                        <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--success-color); margin-bottom: 15px;"></i>
-                        <h4 style="color: var(--text-dark); margin-bottom: 10px;">আবেদন সফলভাবে গৃহীত হয়েছে!</h4>
-                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 5px;">খুব শীঘ্রই আমাদের ডেডিকেটেড টিমের একজন সদস্য আপনার সাথে যোগাযোগ করবেন অথবা আপনাকে একটি নিশ্চিতকরণ ইমেইল পাঠানো হবে।</p>
-                        <p style="color: var(--text-light); font-size: 0.95rem;">আপনার ধৈর্য এবং আগ্রহের জন্য আন্তরিক ধন্যবাদ!</p>
-                    </div>
-                     <p style="text-align:center; font-size: 0.9rem; color: var(--text-lighter);">(উপরের বিবরণটি আপনার প্রদানকৃত চতুর্থ ছবির সফল আবেদন বার্তাটির অনুরূপ।)</p>
-                </section>
-
-                <section class="guide-section">
-                    <h3>অন্যান্য গুরুত্বপূর্ণ তথ্য</h3>
-                    <div class="form-field-explanation">
-                        <h4>আপনার কি ইতিমধ্যে একটি একাউন্ট আছে?</h4>
-                        <p>যদি আমাদের প্ল্যাটফর্মে আপনার ইতোমধ্যেই একটি একাউন্ট থেকে থাকে, তাহলে নতুন করে রেজিস্ট্রেশন করার প্রয়োজন নেই। সেক্ষেত্রে, ফর্মের নিচে "<strong style="color: var(--accent-color);">অলরেডি আপনার একটি একাউন্ট আছে? লগইন করুন</strong>" লিঙ্কে ক্লিক করে আপনার Existing একাউন্টে লগইন করতে পারেন।</p>
-                    </div>
-                    <div class="form-field-explanation">
-                        <h4>যেকোনো জিজ্ঞাসা বা সহায়তার জন্য</h4>
-                        <p>ফর্ম পূরণ করতে গিয়ে কোনো অসুবিধা হলে বা প্ল্যাটফর্ম সম্পর্কে কোনো প্রশ্ন থাকলে, অনুগ্রহ করে আমাদের <a href="https://yrinspireit.github.io/contact">সাপোর্ট টিমের</a> সাথে যোগাযোগ করুন। এছাড়াও, সাধারণ কিছু প্রশ্নের উত্তর খুঁজে পেতে আমাদের <a href="https://yrinspireit.github.io/faq">FAQ (সচরাচর জিজ্ঞাসিত প্রশ্নাবলী)</a> পেজটি দেখতে পারেন।</p>
-                    </div>
-                </section>
-
-                <!-- Added Another Article CTA Section -->
-                <section class="guide-section related-articles-section">
-                    <h3>আরও পড়ুন</h3>
-                    <p>আমাদের প্ল্যাটফর্ম এবং এর বিভিন্ন দিক সম্পর্কে আরও জানতে নিচের আর্টিকেলগুলো পড়তে পারেন:</p>
-                    <div class="related-articles-grid">
-                        <div class="article-cta-card">
-                            <h4>আমাদের প্ল্যাটফর্মে কিভাবে আয় করবেন?</h4>
-                            <p>আমাদের প্ল্যাটফর্ম ব্যবহার করে কিভাবে আপনি আপনার আয় বৃদ্ধি করতে পারেন সে সম্পর্কে বিস্তারিত জানুন। কৌশল, টিপস এবং সাফল্যের গল্প।</p>
-                            <a href="#" class="btn btn-outline">বিস্তারিত পড়ুন <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="article-cta-card">
-                            <h4>সাপোর্ট এবং নিরাপত্তা বিষয়ক গাইডলাইন</h4>
-                            <p>আপনার একাউন্টের নিরাপত্তা নিশ্চিত করতে এবং আমাদের সাপোর্ট সিস্টেম কিভাবে কার্যকরভাবে ব্যবহার করবেন তা বিস্তারিতভাবে জেনে নিন।</p>
-                            <a href="#" class="btn btn-outline">বিস্তারিত পড়ুন <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="article-cta-card">
-                            <h4>কমিউনিটি নীতিমালা ও আচরণবিধি</h4>
-                            <p>আমাদের কমিউনিটির সদস্য হিসেবে আপনার দায়িত্ব ও অধিকার সম্পর্কে জানুন। একটি সুস্থ ও সহযোগিতামূলক পরিবেশ বজায় রাখতে সাহায্য করুন।</p>
-                            <a href="#" class="btn btn-outline">বিস্তারিত পড়ুন <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="final-message">
-                    <p>আমরা আশা করি এই নির্দেশিকাটি আপনাকে সঠিকভাবে ফর্ম পূরণে সহায়তা করবে। Your Inspire IT পরিবারের অংশ হওয়ার জন্য আপনাকে আগাম অভিনন্দন!</p>
+        <div class="jsp-timeline">
+            <!-- Step 1 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-lightbulb"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">১. আপনার পছন্দ মতে একটি কাজ বেছে নিন</h3>
+                    <p class="jsp-step-description">আমাদের প্ল্যাটফর্মে উপলব্ধ বিভিন্ন কাজের সুযোগগুলো অন্বেষণ করুন। আপনার দক্ষতা, আগ্রহ এবং ক্যারিয়ার লক্ষ্যের সাথে সামঞ্জস্যপূর্ণ কাজটি <strong>সতর্কতার সাথে নির্বাচন</strong> করুন।</p>
                 </div>
-            </article>
-        </div> <!-- End .container -->
-    </main>
-
-    <!-- Footer -->
-     <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                 <div class="footer-col"><h4>আমাদের সম্পর্কে</h4><ul><li><a href="https://yrinspireit.github.io/">আমাদের লক্ষ্য</a></li><li><a href="https://yrinspireit.github.io/#how-it-works">কিভাবে কাজ করে</a></li><li><a href="https://yrinspireit.github.io/error">ব্লগ</a></li></ul></div>
-                 <div class="footer-col"><h4>সাপোর্ট</h4><ul><li><a href="https://yrinspireit.github.io/faq">হেল্প সেন্টার / FAQ</a></li><li><a href="https://yrinspireit.github.io/contact">যোগাযোগ</a></li><li><a href="https://yrinspireit.github.io/report">রিপোর্ট</a></li><li><a href="https://yrinspireit.github.io/error">পেমেন্ট তথ্য</a></li></ul></div>
-                 <div class="footer-col"><h4>আইন ও স্বচ্ছতা</h4><ul><li><a href="https://yrinspireit.github.io/error">ব্যবহারের শর্তাবলী</a></li><li><a href="https://yrinspireit.github.io/error">গোপনীয়তা নীতি</a></li><li><a href="https://yrinspireit.github.io/erro">কুকি পলিসি</a></li><li><a href="https://yrinspireit.github.io/error">আর্নিং ডিসক্লেইমার</a></li></ul></div>
-                 <div class="footer-col" style="display: none;"><h4>আমাদের সাথে যুক্ত হোন</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
             </div>
-            <div class="footer-bottom">
-                 © ২০২২-২০২৫ Your Inspire IT. সর্বস্বত্ব সংরক্ষিত।
+
+            <!-- Step 2 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-chalkboard-teacher"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">২. বেছে নেওয়া কাজ সম্পর্কে বিস্তারিত জানুন</h3>
+                    <p class="jsp-step-description">নির্বাচিত কাজটি সম্পর্কে সম্পূর্ণ ধারণা পেতে আমাদের <strong>ডেডিকেটেড রেফারেল টিম বা সাপোর্ট চ্যানেল</strong> থেকে বিস্তারিত তথ্য সংগ্রহ করুন। আপনার সকল প্রশ্নের উত্তর পেতে দ্বিধা করবেন না।</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-shield-alt"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৩. আমাদের সকলননীতিমালা ও শর্তাবলীতে সম্মতি জানান</h3>
+                    <p class="jsp-step-description">আমাদের প্ল্যাটফর্ম ব্যবহারের <a href="/terms-of-service" target="_blank">শর্তাবলী</a> এবং <a href="/privacy-policy" target="_blank">গোপনীয়তা নীতিমালা</a> মনোযোগ সহকারে পড়ুন। একটি স্বচ্ছ ও নিরাপদ কর্মপরিবেশ নিশ্চিত করতে এগুলোতে আপনার <strong>সচেতন সম্মতি</strong> প্রয়োজন।</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-user-edit"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৪. নির্ভুল তথ্যে রেজিস্ট্রেশন ফ্রম পূরণ করুন</h3>
+                    <p class="jsp-step-description">আমাদের নিরাপদ <a href="signup.html" target="_blank">অনলাইন রেজিস্ট্রেশন ফর্মটি</a> আপনার সঠিক এবং হালনাগাদ তথ্য দিয়ে পূরণ করুন। আপনার তথ্যের নিরাপত্তা আমাদের সর্বোচ্চ অগ্রাধিকার।</p>
+                </div>
+            </div>
+            
+            <!-- Step 5 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-paper-plane"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৫. এপ্রুভাল বার্তা গ্রহণ করুন</h3>
+                    <p class="jsp-step-description">সফলভাবে ফর্ম জমা দেওয়ার পর, আপনার রেজিস্টার্ড ফেসবুক মেসেঞ্জার বা ইমেইলে একটি <strong>স্বয়ংক্রিয় নিশ্চিতকরণ বার্তা</strong> পাঠানো হবে। স্প্যাম ফোল্ডারও চেক করতে ভুলবেন না।</p>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-user-shield"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৬. একাউন্ট এক্টিভ করুন</h3>
+                    <p class="jsp-step-description">নিশ্চিতকরণ বার্তায় প্রদত্ত নির্দেশাবলী অনুসরণ করে আপনার একাউন্টটি <strong>সক্রিয় (Activate)</strong> করুন। এটি আপনার একাউন্টের পূর্ণাঙ্গ নিরাপত্তা ও কার্যকারিতা নিশ্চিত করবে।</p>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-unlock-alt"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৭. আপনার পাসওয়ার্ড পরিবর্তন করুন</h3>
+                    <p class="jsp-step-description">একাউন্ট সক্রিয় করার পর, আপনার ড্যাশবোর্ডে লগইন করে একটি <strong>শক্তিশালী ও স্বতন্ত্র পাসওয়ার্ড</strong> সেট করুন। প্রয়োজনে পুরাতন পাসওয়ার্ড পরিবর্তন করে নিন।</p>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-rocket"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৮. কর্মক্ষেত্রে আপনার যাত্রা শুরু</h3>
+                    <p class="jsp-step-description">অভিনন্দন! আপনার একাউন্ট এখন সম্পূর্ণ প্রস্তুত। আপনার নির্বাচিত কাজটি শুরু করে দক্ষতা ও নিষ্ঠার সাথে <strong>উপার্জন করুন</strong>। আমাদের সাপোর্ট টিম সর্বদা আপনার পাশে থাকবে।</p>
+                </div>
+            </div>
+            
+            <!-- Step 9 -->
+            <div class="jsp-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-wallet"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">৯. উপার্জিত অর্থ উত্তোলন</h3>
+                    <p class="jsp-step-description">আপনার পরিশ্রমের ফসল, উপার্জিত অর্থ, আমাদের <strong>নির্ভরযোগ্য ও দ্রুত পেমেন্ট সিস্টেমের</strong> মাধ্যমে আপনার পছন্দের পেমেন্ট একাউন্টে সহজেই উত্তোলন করুন।</p>
+                </div>
+            </div>
+
+            <!-- Step 10 - Final Step -->
+            <div class="jsp-step jsp-final-step">
+                <div class="jsp-step-icon-container"><i class="fas fa-trophy"></i></div>
+                <div class="jsp-step-content-wrapper">
+                    <h3 class="jsp-step-title">১০. সাফল্য উপভোগ করুন!</h3>
+                    <p class="jsp-step-description">আপনি এখন আমাদের প্রগতিশীল এবং সফল কমিউনিটির একজন গুরুত্বপূর্ণ সদস্য। আপনার অর্জিত <strong>সাফল্য এবং আর্থিক স্বাধীনতা</strong> পূর্ণরূপে উপভোগ করুন। আপনার ভবিষ্যতের জন্য শুভকামনা!</p>
+                </div>
             </div>
         </div>
-     </footer>
 
+        <div class="jsp-cta-section">
+            <a href="signup.html" class="jsp-cta-button">
+                <i class="fas fa-user-plus"></i> এখনই রেজিস্ট্রেশন করুন
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
-        // --- Mobile Menu Toggle ---
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+        // Optional: Simple Intersection Observer for staggered animation if CSS animation-delay is not enough
+        // This is more robust for elements appearing on scroll, but CSS animation is fine for this layout.
+        /*
+        const steps = document.querySelectorAll('.jsp-step');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    // observer.unobserve(entry.target); // Optional: stop observing after animation
+                }
             });
-        }
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        steps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.1}s`; // Stagger via JS if preferred
+            observer.observe(step);
+        });
+        */
     </script>
 </body>
-  </html>
+    </html>
